@@ -7,6 +7,8 @@ namespace App\Traits;
 use App\Http\Resources\Api\v1\UserCollection;
 use App\Http\Resources\Api\v1\UserResource;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 trait HttpResponse
 {
@@ -19,7 +21,7 @@ trait HttpResponse
      *
      * @return JsonResponse
      */
-    public function success(string $message, int $code, array | UserCollection | UserResource $data = []): JsonResponse
+    public function success(string $message, int $code, array | ResourceCollection | JsonResource $data = []): JsonResponse
     {
         return response()->json([
             'message' => $message,
@@ -38,7 +40,7 @@ trait HttpResponse
      *
      * @return JsonResponse
      */
-    public function error(string $message, int $code, array $errors, array $data = []): JsonResponse
+    public function error(string $message, int $code, array $errors = [], array $data = []): JsonResponse
     {
         return response()->json([
             'message' => $message,
