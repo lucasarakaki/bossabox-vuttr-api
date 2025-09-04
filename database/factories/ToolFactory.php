@@ -19,19 +19,12 @@ class ToolFactory extends Factory
     public function definition(): array
     {
         $options = ['Node', 'PHP', 'Back-end', 'Front-end', 'Tecnologia', 'Finanças', 'Notícias', 'Futebol', 'Entreterimento'];
-        $keys    = array_rand($options, 5);
-
-        $values = array_map(function($keys) use ($options) {
-            return $options[$keys];
-        }, $keys);
-
-        $tags = json_encode($values);
 
         return [
             'title'       => fake()->domainName(),
             'link'        => fake()->url(),
             'description' => fake()->text(),
-            'tags'        => $tags,
+            'tags'        => fake()->randomElements($options, 5),
         ];
     }
 }
