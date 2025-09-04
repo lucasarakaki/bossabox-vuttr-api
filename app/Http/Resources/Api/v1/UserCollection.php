@@ -13,7 +13,9 @@ class UserCollection extends ResourceCollection
     /**
      * Transform the resource collection into an array.
      *
-     * @return array<int|string, mixed>
+     * @param Request $request
+     *
+     * @return Collection
      */
     public function toArray(Request $request): Collection
     {
