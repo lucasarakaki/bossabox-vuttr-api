@@ -14,11 +14,15 @@ return new class () extends Migration {
     {
         Schema::create('tools', function(Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('title', 255);
             $table->string('link', 2048)->unique();
             $table->text('description')->nullable();
             $table->json('tags')->nullable();
             $table->timestamps();
+
+            // Foreign Key
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
