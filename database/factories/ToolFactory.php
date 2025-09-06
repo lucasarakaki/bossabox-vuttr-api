@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +22,7 @@ class ToolFactory extends Factory
         $options = ['Node', 'PHP', 'Back-end', 'Front-end', 'Tecnologia', 'Finanças', 'Notícias', 'Futebol', 'Entreterimento'];
 
         return [
+            'user_id'     => User::factory()->create(),
             'title'       => fake()->domainName(),
             'link'        => fake()->url(),
             'description' => fake()->text(),
